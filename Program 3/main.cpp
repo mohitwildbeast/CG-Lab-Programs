@@ -1,22 +1,18 @@
-#include<GL/glut.h>
+#include<gl/glut.h>
 #include<stdio.h>
 
 int m;
-
 typedef float point[3];
-
 point tetra[4] = { {0,100,-100},{0,0,100},{100,-100,-100},{-100,-100,-100} };
-
 void tetrahedron(void);
 void myinit(void);
 void divide_triangle(point a, point b, point c, int m);
 void draw_triangle(point p1, point p2, point p3);
-
 int main(int argv, char** argc)
 {
 	//int m;
 	printf("Enter the number of iterations: ");
-	scanf("%d", &m);
+	scanf_s("%d", &m);
 	glutInit(&argv, argc);
 	glutInitDisplayMode(GLUT_SINGLE | GLUT_RGB | GLUT_DEPTH);
 	glutInitWindowPosition(100, 200);
@@ -27,7 +23,6 @@ int main(int argv, char** argc)
 	myinit();
 	glutMainLoop();
 }
-
 void divide_triangle(point a, point b, point c, int m)
 {
 	point v1, v2, v3;
@@ -47,7 +42,6 @@ void divide_triangle(point a, point b, point c, int m)
 	else
 		draw_triangle(a, b, c);
 }
-
 void myinit()
 {
 	glClearColor(1, 1, 1, 1);
@@ -56,7 +50,6 @@ void myinit()
 	glOrtho(-500.0, 500.0, -500.0, 500.0, -500.0, 500.0);
 	//gluOrtho(-500.0,500.0,-500.0,500.0,-500.0,500.0);
 }
-
 void tetrahedron(void)
 {
 	//myinit();
@@ -71,7 +64,6 @@ void tetrahedron(void)
 	divide_triangle(tetra[0], tetra[2], tetra[3], m);
 	glFlush();
 }
-
 void draw_triangle(point p1, point p2, point p3)
 {
 	glBegin(GL_TRIANGLES);

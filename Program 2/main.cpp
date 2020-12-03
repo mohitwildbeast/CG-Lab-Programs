@@ -1,11 +1,11 @@
-#include<GL/glut.h>
+#include<gl/glut.h>
 #include<stdio.h>
 #include<math.h>
+#include<iostream>
 
+using namespace std;
 int xc, yc, r;
-
 int rx, ry, xce, yce;
-
 void draw_circle(int xc, int yc, int x, int y)
 {
 	glBegin(GL_POINTS);
@@ -19,7 +19,6 @@ void draw_circle(int xc, int yc, int x, int y)
 	glVertex2i(xc - y, yc - x);
 	glEnd();
 }
-
 void circlebres()
 {
 	glClear(GL_COLOR_BUFFER_BIT);
@@ -40,11 +39,8 @@ void circlebres()
 	}
 	glFlush();
 }
-
 int p1_x, p2_x, p1_y, p2_y;
-
 int point1_done = 0;
-
 void myMouseFunccircle(int button, int state, int x, int y)
 {
 	if (button == GLUT_LEFT_BUTTON && state == GLUT_DOWN && point1_done == 0)
@@ -77,13 +73,12 @@ void draw_ellipse(int xce, int yce, int x, int y)
 	glVertex2i(-x + xce, -y + yce);
 	glEnd();
 }
-
 void midptellipse()
 {
 	glClear(GL_COLOR_BUFFER_BIT);
 	float dx, dy, d1, d2, x, y;
 	x = 0;
-	y = ry;
+	y = int(ry);
 
 	// Initial decision parameter of region 1 
 	d1 = (ry * ry) - (rx * rx * ry) +
@@ -149,11 +144,8 @@ void midptellipse()
 	}
 	glFlush();
 }
-
 int p1e_x, p2e_x, p1e_y, p2e_y, p3e_x, p3e_y;
-
 int point1e_done = 0;
-
 void myMouseFunc(int button, int state, int x, int y)
 {
 	if (button == GLUT_LEFT_BUTTON && state == GLUT_DOWN && point1e_done == 0)
@@ -183,10 +175,8 @@ void myMouseFunc(int button, int state, int x, int y)
 		point1e_done = 0;
 	}
 }
-
 void myDrawing()
 { }
-
 void myDrawingc()
 { }
 
@@ -198,15 +188,16 @@ void minit()
 	gluOrtho2D(-250, 250, -250, 250);
 }
 
-int main(int argc, char* argv[])
+void main(int argc, char* argv[])
 {
-	
+
 	glutInit(&argc, argv);
 	glutInitDisplayMode(GLUT_SINGLE | GLUT_RGB);
 	glutInitWindowSize(500, 500);
 	glutInitWindowPosition(0, 0);
-	/* 
+	
 	//FOR MOUSE
+	cout << "Creating Circle and ellipse on mouse click\n";
 	int id1 = glutCreateWindow("Circle");
 	glutSetWindow(id1);
 	glutMouseFunc(myMouseFunccircle);
@@ -218,26 +209,35 @@ int main(int argc, char* argv[])
 	glutSetWindow(id2);
 	glutMouseFunc(myMouseFunc);
 	glutDisplayFunc(myDrawing);
-	//END MOUSE 
-	*/ 
+	//END MOUSE
+	
 	//FOR KEYBOARD
-	printf("Enter 1 to draw circle , 2 to draw ellipse\n");
-	int ch;
-	scanf("%d",&ch);
-	switch(ch){
-	case 1: 
-	printf("Enter coordinates of centre of circle and radius\n");
-	scanf("%d%d%d",&xc,&yc,&r);
-	glutCreateWindow("Circle");
-	glutDisplayFunc(circlebres);
-	break;
-	case 2: 
-	printf("Enter coordinates of centre of ellipse and major and minor radius\n");
-	scanf("%d%d%d%d",&xce,&yce,&rx,&ry);
-	glutCreateWindow("Ellipse");
-	glutDisplayFunc(midptellipse);
-	break;
-	}
+	
+		/*printf("Enter 1 to draw circle , 2 to draw ellipse\n");
+		int ch;
+		//scanf("%d", &ch);
+		cin >> ch;
+		switch (ch) {
+		case 1:
+			printf("Enter coordinates of centre of circle\n");
+			//scanf("%d%d%d", &xc, &yc, &r);
+			cin >> xc >> yc;
+			cout << "Enter radius of circle\n";
+			cin >> r;
+			glutCreateWindow("Circle");
+			glutDisplayFunc(circlebres);
+			break;
+		case 2:
+			printf("Enter coordinates of centre of ellipse\n");
+			//scanf("%d%d%d%d", &xce, &yce, &rx, &ry);
+			cin >> xce >> yce;
+			cout << "Enter major and minor radius of ellipse\n";
+			cin >> rx >> ry;
+			glutCreateWindow("Ellipse");
+			glutDisplayFunc(midptellipse);
+			break;
+		}*/
+	
 	//END KEYBOARD 
 	minit();
 	glutMainLoop();

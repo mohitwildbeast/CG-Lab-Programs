@@ -1,12 +1,9 @@
 #include <iostream>
 #include <GL/glut.h>
-
+#include <time.h>
 using namespace std;
-
 int x1, x2, yc1, y2;
-
 int flag = 0;
-
 void draw_pixel(int x, int y)
 {
 	glColor3f(1, 0, 0);
@@ -16,7 +13,6 @@ void draw_pixel(int x, int y)
 	glFlush();
 
 }
-
 void draw_line()
 {
 	int dx, dy, i, e;
@@ -78,14 +74,12 @@ void draw_line()
 	}
 	glFlush();
 }
-
 void myinit()
 {
 	glClear(GL_COLOR_BUFFER_BIT);
 	glClearColor(1, 1, 1, 1);
 	gluOrtho2D(-250, 250, -250, 250);
 }
-
 void MyMouse(int button, int state, int x, int y)
 {
 	switch (button)
@@ -95,7 +89,7 @@ void MyMouse(int button, int state, int x, int y)
 		{
 			if (flag == 0)
 			{
-				printf("Defining x1,y1 ");
+				printf("Defining x1,y1:\t");
 				x1 = x - 250;
 				yc1 = 250 - y;
 				flag++;
@@ -103,7 +97,7 @@ void MyMouse(int button, int state, int x, int y)
 			}
 			else
 			{
-				printf("Defining x2,y2 ");
+				printf("\nDefining x2,y2:\t");
 				x2 = x - 250;
 				y2 = 250 - y;
 				flag = 0;
@@ -116,24 +110,20 @@ void MyMouse(int button, int state, int x, int y)
 		break;
 	}
 }
-
-void display() {
-}
-
+void display()
+{}
 int main(int ac, char* av[])
 {
-	/*
+	
 	//FOR KEYBOARD
-	cout<<"X1\n";
-	cin>>x1;
-	cout<<"Y1\n";
-	cin>>yc1;
-	cout<<"X2\n";
-	cin>>x2;
-	cout<<"Y2\n";
-	cin>>y2;
+	/*cout<<"Enter X1 and Y1\n";
+	cin>>x1>>yc1;
+	
+	cout<<"\nEnter X2 and Y2\n";
+	cin>>x2>>y2;*/
+	
 	//END KEYBOARD
-	*/
+	
 	glutInit(&ac, av);
 	glutInitDisplayMode(GLUT_SINGLE | GLUT_RGB);
 	glutInitWindowSize(500, 500);

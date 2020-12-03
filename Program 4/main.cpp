@@ -1,8 +1,8 @@
 #include<stdlib.h>
-#include<GL/glut.h>
+#include<gl/glut.h>
 #include<algorithm>
 #include<iostream>
-#include<unistd.h>
+#include<windows.h>
 
 using namespace std;
 float x[100], y[100]; //= { 0,0,20,100,100 }, y[] = { 0,100,50,100,0 };
@@ -12,7 +12,7 @@ int wx = 500, wy = 500;
 static float intx[10] = { 0 };
 
 void draw_line(float x1, float y1, float x2, float y2) {
-	sleep(1);
+	Sleep(100);
 	glColor3f(1, 0, 0);
 	glBegin(GL_LINES);
 	glVertex2f(x1, y1);
@@ -72,16 +72,17 @@ void myInit() {
 	gluOrtho2D(0, wx, 0, wy);
 
 }
-
-int main(int ac, char* av[]) {
+void main(int ac, char* av[]) {
 	glutInit(&ac, av);
 	printf("Enter no. of sides: \n");
-	scanf("%d", &n);
+	//scanf("%d", &n);
+	cin >> n;
 	printf("Enter coordinates of endpoints: \n");
 	for (int i = 0; i < n; i++)
 	{
-		printf("X-coord Y-coord: \n");
-		scanf("%f %f", &x[i], &y[i]);
+		printf("X-coord Y-coord for %d vertex: \n",i+1);
+		//scanf("%f %f", &x[i], &y[i]);
+		cin >> x[i] >> y[i];
 	}
 	glutInitDisplayMode(GLUT_SINGLE | GLUT_RGB);
 	glutInitWindowSize(500, 500);
