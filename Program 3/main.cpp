@@ -1,4 +1,4 @@
-#include<gl/glut.h>
+#include<GL/glut.h>
 #include<stdio.h>
 
 int m;
@@ -12,7 +12,7 @@ int main(int argv, char** argc)
 {
 	//int m;
 	printf("Enter the number of iterations: ");
-	scanf_s("%d", &m);
+	scanf("%d", &m);
 	glutInit(&argv, argc);
 	glutInitDisplayMode(GLUT_SINGLE | GLUT_RGB | GLUT_DEPTH);
 	glutInitWindowPosition(100, 200);

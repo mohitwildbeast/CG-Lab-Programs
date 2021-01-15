@@ -1,4 +1,4 @@
-#include<gl/glut.h>
+#include<GL/glut.h>
 #include <math.h>
 #include<iostream>
 //#include<stdlib.h>
@@ -99,7 +99,7 @@ void mouse(int btn, int state, int x, int y) {
 		display2();
 	}
 }
-void main(int argc, char** argv)
+int main(int argc, char** argv)
 {
 	printf("Enter the rotation angle\n");
 	//scanf("%d", &angle);
